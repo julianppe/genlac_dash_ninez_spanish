@@ -27,7 +27,7 @@ mark_values = {2000:'2000',2001:'2001',2002:'2002',
                 2012:'2012',2015:'2015',2016:'2016',
                 2013:'2013',2014:'2014',2015:'2015',
                 2016:'2016',2017:'2017',2018:'2018',
-                2019:'2019',2020:'2020'}
+                2019:'2019',2020:'2020',2021:'2021'}
 
 # Para ordenar dropdown:
 list_comparacion_por = list(df['comparacion_por'].unique())
@@ -37,23 +37,23 @@ list_comparacion_por_ordenada = [x for _,x in sorted(zip(list_comparacion_por_or
 layout = html.Div([
         dbc.Row([
         dbc.Col([
-            dcc.Dropdown(options=[{'label': x, 'value': x} for x in df.pais.unique()], multi=True, id='page5-pais_elect')
+            dcc.Dropdown(options=[{'label': x, 'value': x} for x in df.pais.unique()], multi=True, id='page4-pais_elect')
         ], width=6),
         dbc.Col([
-            dcc.Dropdown(options=[{'label': x, 'value': x} for x in list_comparacion_por_ordenada], multi=False, persistence=True, persistence_type='memory', value='Mujer', id='page5-comparacion_por_elect')
+            dcc.Dropdown(options=[{'label': x, 'value': x} for x in list_comparacion_por_ordenada], multi=False, persistence=True, persistence_type='memory', value='Mujer', id='page4-comparacion_por_elect')
         ], width=6),
     ]),
         dbc.Row([
         dbc.Col([
-            dcc.Graph(id='page5-line', config={'displayModeBar':False})
+            dcc.Graph(id='page4-line', config={'displayModeBar':False})
         ], width=12),
     ]),
         dbc.Row([
         dbc.Col([
-        dcc.RangeSlider(id='page5-the_year',
+        dcc.RangeSlider(id='page4-the_year',
                 min=2000,
-                max=2020,
-                value=[2000,2020],
+                max=2021,
+                value=[2000,2021],
                 marks=mark_values,
                 step=1)
         ], width=12),
@@ -62,9 +62,9 @@ layout = html.Div([
 
 
 @callback(
-    Output('page5-pais_elect', "value"),
+    Output('page4-pais_elect', "value"),
     Output("store", "data"),
-    Input('page5-pais_elect', "value"),
+    Input('page4-pais_elect', "value"),
     State("store", "data"),
 )
 def sync_dropdowns(dd_pais, store_pais):
@@ -73,10 +73,10 @@ def sync_dropdowns(dd_pais, store_pais):
     return dd_pais, dd_pais
 
 @callback(
-    Output('page5-line', 'figure'),
-    Input('page5-pais_elect', 'value'),
-    Input('page5-comparacion_por_elect', 'value'),
-    [Input('page5-the_year','value')]
+    Output('page4-line', 'figure'),
+    Input('page4-pais_elect', 'value'),
+    Input('page4-comparacion_por_elect', 'value'),
+    [Input('page4-the_year','value')]
 )
 
 

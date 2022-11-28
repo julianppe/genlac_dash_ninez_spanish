@@ -29,7 +29,7 @@ dropdown = dbc.Row([
     dbc.Col(
         dbc.DropdownMenu(
         children=[
-            dbc.DropdownMenuItem("Educación", header=True),
+            dbc.DropdownMenuItem("Escolarización", header=True),
             dbc.DropdownMenuItem("Tasa de escolarización pre-primaria (5 años)", href="/"),
             dbc.DropdownMenuItem("Tasa de escolarización pre-primaria (3 a 5 años)", href="/tasa-escolarizacion-pre-primaria-35"),
             dbc.DropdownMenuItem("Tasa neta de escolarización primaria", href="/tasa-neta-escolarizacion-primaria"),
@@ -38,15 +38,12 @@ dropdown = dbc.Row([
             dbc.DropdownMenuItem("Tasa de finalización del nivel primario", href="/tasa-finalizacion-primario"),
             dbc.DropdownMenuItem("Tasa de finalización del nivel secundario", href="/tasa-finalizacion-secundario"),
             dbc.DropdownMenuItem(divider=True),
-            dbc.DropdownMenuItem("Desarrollo", header=True),
-            dbc.DropdownMenuItem("Matrimonio precoz", href="/matrimonio-precoz"),
-            dbc.DropdownMenuItem("Porcentaje de jóvenes de 15 a 24 fuera de la escuela y del mercado laboral", href="/jovenes-fuera-escuela-trabajo"),
-            dbc.DropdownMenuItem(divider=True),
             dbc.DropdownMenuItem("Actividades y uso del tiempo", header=True),
             dbc.DropdownMenuItem("Participación en actividades de cuidado", href="/participacion-actividades-cuidado"),
             dbc.DropdownMenuItem("Horas semanales dedicadas a actividades de cuidado", href="/horas-actividades-cuidado"),
             dbc.DropdownMenuItem("Participación en actividades de cuidado de niños", href="/participacion-actividades-cuidado-ninos"),
             dbc.DropdownMenuItem("Horas semanales dedicadas a actividades de cuidado de niños", href="/horas-actividades-cuidado-ninos"),
+            dbc.DropdownMenuItem("Porcentaje de jóvenes de 15 a 24 fuera de la escuela y del mercado laboral", href="/jovenes-fuera-escuela-trabajo"),
             dbc.DropdownMenuItem(divider=True),
             dbc.DropdownMenuItem("Puntajes en pruebas", header=True),
             dbc.DropdownMenuItem("Puntaje promedio en pruebas estandarizadas para alumnos de tercer grado", href="/puntajes-tercero"),

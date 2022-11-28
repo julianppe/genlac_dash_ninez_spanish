@@ -7,14 +7,14 @@ from dash import dcc, html, register_page, ctx, no_update
 from dash_extensions.enrich import Output, Input, State, callback
 
 dash.register_page(__name__,
-                   path='/ratio-tercero',  # represents the url text
-                   name='Ratio de puntajes en pruebas estandarizadas para alumnos de tercer grado',  # name of page, commonly used as name of link
-                   title='Ratio de puntajes en pruebas estandarizadas para alumnos de tercer grado'  # epresents the title of browser's tab
+                   path='/ratio-sexto',  # represents the url text
+                   name='Ratio de puntajes en pruebas estandarizadas para alumnos de sexto grado',  # name of page, commonly used as name of link
+                   title='Ratio de puntajes en pruebas estandarizadas para alumnos de sexto grado'  # epresents the title of browser's tab
 )
 
 
 # page 1 data
-df = pd.read_csv("datasets/ratio_3ro.csv")
+df = pd.read_csv("datasets/ratio_6to.csv")
 df['indicador'] = df['indicador'].astype(str)
 df['pais'] = df['pais'].astype(str)
 df['comparacion_por'] = df['comparacion_por'].astype(str)
@@ -27,7 +27,7 @@ mark_values = {2000:'2000',2001:'2001',2002:'2002',
                 2012:'2012',2015:'2015',2016:'2016',
                 2013:'2013',2014:'2014',2015:'2015',
                 2016:'2016',2017:'2017',2018:'2018',
-                2019:'2019',2020:'2020'}
+                2019:'2019',2020:'2020',2021:'2021'}
 
 # Para ordenar dropdown:
 list_comparacion_por = list(df['comparacion_por'].unique())
@@ -52,8 +52,8 @@ layout = html.Div([
         dbc.Col([
         dcc.RangeSlider(id='page17-the_year',
                 min=2000,
-                max=2020,
-                value=[2000,2020],
+                max=2021,
+                value=[2000,2021],
                 marks=mark_values,
                 step=1)
         ], width=12),
@@ -96,7 +96,7 @@ def update_graphs(pais_v, comparacion_por_v, years_chosen):
         symbol= 'desagregacion',
         labels=dict(ano="Año", valor="", pais="País", indicador="Indicador", desagregacion="Desagregación")).update_xaxes(type='category').update_layout(margin=dict(l=10, r=10, t=10, b=10))
     else:
-        fig_line = px.bar(dff, x='ano', y='valor', color='pais', pattern_shape='desagregacion', barmode="group",
+        fig_line = px.bar(dff, x='ano', y='valor', color='pais', pattern_shape='desagregacion', pattern_shape_sequence=["", "x", "."], barmode="group",
         labels=dict(ano="Año", valor="", pais="País", indicador="Indicador", desagregacion="Desagregación")).update_xaxes(type='category', categoryorder='category ascending').update_layout(margin=dict(l=10, r=10, t=10, b=10))
     fig_line.update_layout(
         xaxis=dict( 
